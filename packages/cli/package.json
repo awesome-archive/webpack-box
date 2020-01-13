@@ -1,14 +1,14 @@
 {
   "name": "@pkb/cli",
-  "version": "1.0.0",
+  "version": "1.2.10",
   "bin": {
-    "pkb": "bin/index.js"
+    "pk": "bin/index.js"
   },
-  "description": "各种模块自动化打包脚手架",
+  "description": "webpack-box 全局脚手架，用于全局操作项目，项目配置检查、生成项目、添加插件等等",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.0.0",
+    "@pkb/shared-utils": "^1.2.10",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
@@ -29,5 +29,6 @@
     "validate-npm-package-name": "^3.0.0",
     "vue-jscodeshift-adapter": "^2.0.2",
     "yaml-front-matter": "^4.0.0"
-  }
+  },
+  "gitHead": "1c9bcfbf49b28e8446a0478886b788a3f42554f3"
 }

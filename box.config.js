@@ -25,10 +25,10 @@ module.exports = function (config) {
     entry: 'src/main.js',
     output: 'dist',
     publicPath: '/common/',
-    port: 8888,
+    port: 8889,
     mock: true,
     env: {
-      MY_ENV: 'my-env'
+      REACT: 'react' // 配置 react
     },
     alias: {
       '@': resolve('src'),
@@ -90,7 +90,6 @@ module.exports = function (config) {
         filename: 'index2.html'
       }
     },
-    chainWebpack(config) {
-    }
+    chainWebpack(config) {}
   }
 }
