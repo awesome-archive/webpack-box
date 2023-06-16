@@ -16,9 +16,9 @@ exports.logWithSpinner = (symbol, msg) => {
       text: lastMsg.text
     })
   }
-  spinner.text = ' ' + msg
+  spinner.text = ` ${msg}`
   lastMsg = {
-    symbol: symbol + ' ',
+    symbol: `${symbol} `,
     text: msg
   }
   spinner.start()
@@ -52,9 +52,4 @@ exports.resumeSpinner = () => {
 
 exports.failSpinner = (text) => {
   spinner.fail(text)
-}
-
-// silent all logs except errors during tests and keep record
-if (process.env.VUE_CLI_TEST) {
-  require('./_silence')('spinner', exports)
 }

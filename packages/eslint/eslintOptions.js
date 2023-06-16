@@ -1,4 +1,4 @@
-exports.config = api => {
+exports.config = () => {
   const config = {
     root: true,
     env: { node: true },
@@ -14,11 +14,11 @@ exports.config = api => {
   return config
 }
 
-function makeJSOnlyValue (str) {
+function makeJSOnlyValue(str) {
   const fn = () => {}
   fn.__expression = str
   return fn
 }
 
-const baseExtensions = ['.js', '.jsx']
-exports.extensions = api => baseExtensions
+const baseExtensions = ['.js', '.jsx', '.ts', '.tsx']
+exports.extensions = () => baseExtensions

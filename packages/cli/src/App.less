@@ -1,0 +1,195 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  overflow: hidden;
+}
+
+.title {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: chocolate;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.863);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+
+  .left {
+    width: 300px;
+    background: rgba(0, 0, 0, 0.596);
+    text-align: center;
+    padding: 0 18px;
+    height: 100%;
+    overflow: hidden;
+
+    .clear-list {
+      color: rebeccapurple;
+      margin-top: 10px;
+      border-radius: 4px;
+      height: 20px;
+      background: lightblue;
+      padding: 0 4px;
+      float: right;
+      margin-bottom: 10px;
+    }
+
+    .project-input {
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 8px;
+      border: none;
+      padding: 0 15px;
+      height: 30px;
+      box-sizing: border-box;
+    }
+
+    .project-list {
+      width: 100%;
+      margin-top: 20px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      overflow: hidden;
+      background: black;
+
+      .project-name {
+        width: 80%;
+        display: inline-block;
+        text-align: left;
+        color: white;
+        line-height: 30px;
+        box-sizing: border-box;
+      }
+
+      .project-name:hover {
+        color: yellow;
+      }
+    }
+  }
+
+  .right {
+    overflow: hidden;
+    width: ~"calc(100vw - 300px)";
+    height: ~"calc(100vh - 60px)";
+    background: rgba(0, 0, 0, 0.082);
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      width: 100%;
+      overflow-y: auto;
+      flex: 1;
+
+      .flow {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .progress-card-wrap {
+          overflow: hidden;
+          overflow-y: auto;
+          box-sizing: border-box;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+
+      .code-diff-wrap {
+        width: 30%;
+        float: right;
+        display: flex;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.74);
+
+        .title {
+          height: 30px;
+          color: cyan;
+          font-size: 16px;
+          line-height: 30px;
+          background: unset;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+          box-sizing: border-box;
+          padding: 0 8px;
+          background: rgba(0, 0, 0, 0.2);
+
+          button {
+            font-size: 12px;
+            border-radius: 4px;
+            height: 20px;
+            width: 40px;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 4px;
+            font-weight: bold;
+          }
+        }
+
+        .code-diff {
+          color: white;
+          overflow: hidden;
+          overflow-y: auto;
+          box-sizing: border-box;
+          padding: 0 8px;
+          flex: 1;
+        }
+
+        .code-diff::-webkit-scrollbar {
+          width: 0 !important
+        }
+      }
+    }
+
+    .cmd {
+      width: 100%;
+      height: 300px;
+      align-self: flex-end;
+
+      .title {
+        height: 10%;
+        display: flex;
+        background: rgb(16, 16, 16);
+        font-size: 14px;
+        align-items: center;
+        color: burlywood;
+
+        .extsh {
+          color: white;
+          margin: 0 10px;
+        }
+      }
+
+      iframe {
+        width: 110%;
+        height: 90%;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: rgb(92, 89, 89);
+}

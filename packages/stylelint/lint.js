@@ -2,6 +2,7 @@ const { execSync } = require('child_process')
 const chalk = require('chalk')
 const stylelint = require('stylelint')
 const CodeframeFormatter = require('stylelint-codeframe-formatter')
+
 function camelize(str) {
   return str.replace(/-(\w)/g, (_, c) => (
     c
@@ -31,15 +32,15 @@ function format(label, msg) {
   return lines.join('\n')
 }
 
-module.exports = async function lint({ api, args = {}, pluginOptions = {} }) {
+module.exports = async function lint({ args = {}, pluginOptions = {} } = {}) {
   if (args.options) {
     execSync('stylelint --help', { stdio: 'inherit' })
     return
   }
 
-  const cwd = api.resolve('.')
+  const cwd = process.cwd()
 
-  const files = args._ && args._.length ? args._ : [cwd + '/src/**/*.{vue,htm,html,css,sss,less,scss}']
+  const files = args._ && args._.length ? args._ : [`${cwd}/src/**/*.{vue,htm,html,css,sss,less,scss}`]
   if (args['no-fix']) {
     args.fix = false
     delete args['no-fix']
@@ -58,18 +59,20 @@ module.exports = async function lint({ api, args = {}, pluginOptions = {} }) {
       if (typeof pluginOptions.formatter !== 'function') {
         console.log(format(
           chalk`{bgYellow.black  WARN }`,
-          chalk`${e.toString()}\n{yellow Invalid formatter}`
+          chalk`${e.toString()}\n{黄色的无效的格式化程序}`
         ))
       }
     }
   }
 
-  const options = Object.assign({}, {
+  const options = {
     configBasedir: cwd,
     fix: true,
     files,
-    formatter: CodeframeFormatter
-  }, pluginOptions, normalizeConfig(args))
+    formatter: CodeframeFormatter,
+    ...pluginOptions,
+    ...normalizeConfig(args)
+  }
 
   try {
     const { errored, results, output: formattedOutput } = await stylelint.lint(options)
@@ -79,7 +82,7 @@ module.exports = async function lint({ api, args = {}, pluginOptions = {} }) {
           if (result.ignored) {
             return null
           }
-          return result.warnings.some(warning => warning.severity === 'warning')
+          return result.warnings.some((warning) => warning.severity === 'warning')
         })
         if (hasWarnings) {
           console.log(formattedOutput)

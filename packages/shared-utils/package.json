@@ -1,13 +1,13 @@
 {
   "name": "@pkb/shared-utils",
-  "version": "1.0.0",
-  "description": "公共utils",
+  "version": "1.4.50",
+  "description": "webpack-box 使用的公共 utils",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luoxue-victor/webpack-box.git",
-    "directory": "packages/shared-utils"
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
   },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "keywords": [
     "pkb",
     "cli",
@@ -32,5 +32,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "1c9bcfbf49b28e8446a0478886b788a3f42554f3"
 }

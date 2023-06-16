@@ -27,13 +27,7 @@
    * @param autoFixOnSave 保存时自动修复
    * @param alwaysShowRuleFailuresAsWarnings 所有特征都是用 Warnings
    */
-  "tslint.autoFixOnSave": false,
   "tslint.alwaysShowRuleFailuresAsWarnings": true,
-  /*
-   * @description stylelint 配置
-   * @param autoFixOnSave 保存时自动修复
-   */
-  "stylelint.autoFixOnSave": true,
   /*
    * @description vetur 配置
    */
@@ -47,10 +41,6 @@
   /*
    * @description 配置编辑器设置以覆盖某种语言
    */
-  "[typescript]": {
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
-    "editor.defaultFormatter": "eg2.tslint"
-  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -58,13 +48,13 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[vue]": {
     "editor.defaultFormatter": "eg2.tslint"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

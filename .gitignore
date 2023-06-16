@@ -1,3 +1,10 @@
 node_modules
 dll
 dist
+.idea
+coverage
+package-lock.json
+lerna-debug.log
+lerna-debug.log
+packages/**/package-lock.json
+mocks

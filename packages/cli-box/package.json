@@ -1,0 +1,18 @@
+{
+  "name": "@pkb/cli-box",
+  "version": "1.4.53",
+  "description": "构建脚手架",
+  "author": "luoxue",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
+  },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
+  "dependencies": {
+    "@pkb/shared-utils": "^1.4.50",
+    "commander": "^7.2.0",
+    "didyoumean": "^1.2.1"
+  },
+  "gitHead": "3105af2c4b0b9c65d9e6cc9e00b8f12333964312"
+}

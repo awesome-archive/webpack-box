@@ -1,4 +1,3 @@
-const fs = require('fs')
 const globby = require('globby')
 
 const renamedArrayArgs = {
@@ -18,18 +17,21 @@ const renamedArgs = {
   config: 'configFile'
 }
 
-module.exports = function lint ({ args = {}, api }) {
+module.exports = function lint({ args = {} } = {}) {
   const path = require('path')
-  const cwd = api.resolve('.')
-  const { log, done, exit, chalk, loadModule } = require('@vue/cli-shared-utils')
+  const cwd = process.cwd()
+  const {
+    log, done, exit, chalk, loadModule
+  } = require('@pkb/shared-utils')
   const { CLIEngine } = loadModule('eslint', cwd, true) || require('eslint')
-  const extensions = require('./eslintOptions').extensions(api)
+  const extensions = require('./eslintOptions').extensions()
   const argsConfig = normalizeConfig(args)
-  const config = Object.assign({
+  const config = {
     extensions,
     fix: true,
-    cwd
-  }, argsConfig)
+    cwd,
+    ...argsConfig
+  }
 
   const noFixWarnings = (argsConfig.fixWarnings === false)
   const noFixWarningsPredicate = (lintResult) => lintResult.severity === 2
@@ -55,20 +57,15 @@ module.exports = function lint ({ args = {}, api }) {
     '*.js',
     '.*.js'
   ]
-    .filter(pattern =>
-      globby
-        .sync(pattern, { cwd, absolute: true })
-        .some(p => !engine.isPathIgnored(p))
-    )
+    .filter((pattern) => globby
+      .sync(pattern, { cwd, absolute: true })
+      .some((p) => !engine.isPathIgnored(p)))
 
   const files = args._ && args._.length
     ? args._
     : defaultFilesToLint
 
   const processCwd = process.cwd
-  if (!api.invoking) {
-    process.cwd = () => cwd
-  }
 
   const report = engine.executeOnFiles(files)
   process.cwd = processCwd
@@ -85,11 +82,11 @@ module.exports = function lint ({ args = {}, api }) {
 
   if (!isErrorsExceeded && !isWarningsExceeded) {
     if (!args.silent) {
-      const hasFixed = report.results.some(f => f.output)
+      const hasFixed = report.results.some((f) => f.output)
       if (hasFixed) {
         log('Eslint 正在帮您修复以下文件...')
         log()
-        report.results.forEach(f => {
+        report.results.forEach((f) => {
           if (f.output) {
             log(`  ${chalk.blue(path.relative(cwd, f.filePath))}`)
           }
@@ -112,11 +109,9 @@ module.exports = function lint ({ args = {}, api }) {
     }
     exit(1)
   }
-
-  console.log('--------end------')
 }
 
-function normalizeConfig (args) {
+function normalizeConfig(args) {
   const config = {}
   for (const key in args) {
     if (key === 'env') {
@@ -133,6 +128,6 @@ function normalizeConfig (args) {
   return config
 }
 
-function camelize (str) {
+function camelize(str) {
   return str.replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ''))
 }
